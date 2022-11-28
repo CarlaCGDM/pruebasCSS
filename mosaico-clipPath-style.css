@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(60, 70, 50);
+}
+
+.grid {
+    height: 60vh;
+    overflow-y: scroll;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap:10px;
+}
+
+.padre {
+    width: 400px;
+    height: 200px;
+    display:block;
+    position:relative;
+}
+
+.padre > img {
+    width: inherit;
+    height:inherit;
+    object-fit: cover;
+    position:absolute;
+}
+
+.mascara {
+    width: inherit;
+    height: inherit;
+    background-color: brown;
+    clip-path: polygon(25% 101%, 50% -1%, 101% -1%, 101% 101%);
+    position:absolute;
+    z-index: 100;
+}

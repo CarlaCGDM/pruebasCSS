@@ -1,0 +1,215 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.body {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 7.5fr 0.5fr;
+    grid-template-columns: 
+    "header"
+    "main"
+    "footer";
+    grid-auto-flow: column;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+header {
+    background-color: blueviolet;
+}
+
+
+.seccion-busqueda {
+    background-color: yellowgreen;
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "header-busqueda"
+    "filtros-busqueda";
+}
+
+
+#seccion-busqueda > header {
+    grid-area: header-busqueda;
+    background-color: rgb(51, 51, 51);
+}
+
+.filtros-busqueda {
+    grid-area: filtros-busqueda;
+    background-color: #155f37;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-areas: 
+    "barra-busqueda barra-busqueda" 
+    "filtros-extra filtros-basicos"
+    "filtros-extra boton-busqueda";
+}
+
+#boton-slideUp {
+    display: none;
+    grid-area: boton-slideUp;
+    background-color: #0cf55a;
+    text-align: center;
+}
+
+.barra-busqueda {
+    grid-area: barra-busqueda;
+    background-color: #f8ff6a;
+}
+
+.filtros-basicos {
+    grid-area: filtros-basicos;
+    background-color: #c57224;
+}
+
+.filtros-extra {
+    grid-area: filtros-extra;
+    background-color: #c54f24;
+}
+
+.boton-busqueda {
+    grid-area: boton-busqueda;
+    background-color: #701e1b;
+}
+
+.seccion-resultados {
+    background-color:pink;
+}
+
+.grid-resultados {
+    height: 80vh;
+    padding: 20px;
+    overflow-y: scroll;
+    display: grid;
+    justify-items: center;
+    align-content:baseline;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap:8px;
+}
+
+.portada {
+    width: 100px;
+    text-align:center;
+    background-color: gray;
+    aspect-ratio: 2/3;
+}
+
+.portada > img {
+    width:inherit;
+    aspect-ratio: 2/3;
+}
+
+footer {
+    background-color: red;
+}
+
+/*------------------------------------------------------------------------VERSION MOVIL-------------------------------------------------------------*/
+
+@media (max-width: 600px) {
+
+    /*-------------------------------------BASICA----------------------------------*/
+
+    .body {
+      grid-template-columns: auto;
+      grid-template-rows: 2fr 17fr 1fr;
+      grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    }
+
+    main {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+    }
+
+    .seccion-busqueda {
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+        "header-busqueda"
+        "filtros-busqueda";
+    }
+
+    .seccion-resultados {
+        display:none;
+    }
+    
+    .filtros-busqueda {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas:
+        "boton-slideUp"
+        "barra-busqueda" 
+        "filtros-basicos"
+        "boton-busqueda";
+    }
+
+    #boton-slideUp {
+        display:block;
+    }
+
+    #boton-slideUp > img {
+        height: 30px;
+    }
+
+    .filtros-extra {
+        display: none;
+    }
+
+    .portada > p {
+        display:none;
+    }
+
+    .portada > small {
+        display:none;
+    }
+
+    /*---------------------------PAGINA DE FILTROS EXTRA---------------------------*/
+
+    .body-colapsado {
+        height: 100vh;
+        display:grid;
+        grid-template-columns: auto;
+        grid-template-rows: 19fr 1fr;
+    }
+
+    .seccion-busqueda-colapsada {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+        "filtros-busqueda";
+    }
+
+    .filtros-busqueda-expandidos {
+        grid-area: filtros-busqueda;
+        background-color: #155f37;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas:
+        "boton-slideUp"
+        "barra-busqueda" 
+        "filtros-basicos"
+        "filtros-extra"
+        "boton-busqueda";
+    }
+
+    .filtros-extra-visibles {
+        background-color: #c54f24;
+        display: block;
+    }
+
+    /*----------------------PAGINA DE RESULTADOS DE BUSQUEDA------------------------*/
+
+    .seccion-busqueda-invisible {
+        display:none;
+    }
+}
